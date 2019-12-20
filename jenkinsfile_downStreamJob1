@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        echo "Checking out the file from Master..
+        echo "Checking out the file from Master.."
 		sh 'git pull'
 		
       }
