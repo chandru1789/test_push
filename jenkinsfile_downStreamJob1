@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        echo "Checking out the file from Master..."
-        sh 'git checkout master'
+        echo "Checking out the file from Master.."
+		sh 'git checkout master'
 		sh 'git pull'
 		
       }
@@ -23,11 +23,5 @@ pipeline {
         sh 'git push --all --verbose'
       }
     }
-	 stage ('Downstream2') {
-      steps {
-        build job: 'DownStreamJob2'
-      }
-    }
-    
   }
 }
