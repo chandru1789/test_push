@@ -34,7 +34,7 @@ pipeline {
     }
 	stage ('DownStreamJob3') {
       steps {
-        build job: 'DownStreamJob3'
+        build job: 'DownStreamJob4'
       }
     }
 	   
