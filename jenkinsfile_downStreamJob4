@@ -13,7 +13,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "Compiling DownStream2 System...."
-        sh 'echo "DownStream4" ${BUILD_NUMBER}> downStreamJob2Output.txt'
+        sh 'echo "DownStream4" ${BUILD_NUMBER}> downStreamJob4Output.txt'
       }
     }
      stage('Commit') {
