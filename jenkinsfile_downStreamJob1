@@ -14,6 +14,11 @@ pipeline {
         sh 'echo "downStreamJob1" ${BUILD_NUMBER}> downStreamJob1Output.txt'
       }
     }
+	 stage ('Downstream2') {
+      steps {
+        build job: 'DownStreamJob2'
+      }
+    }
      stage('Commit') {
       steps {
         sh 'cat downStreamJob1Output.txt'
