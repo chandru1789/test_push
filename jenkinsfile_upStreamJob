@@ -14,17 +14,17 @@ pipeline {
         sh 'echo "upStreamJob" ${BUILD_NUMBER}> upStreamJobOutput.txt'
       }
     }
-    stage ('Downstream1') {
-      steps {
-        build job: 'DownStreamJob1'
-      }
-    }
      stage('Commit') {
       steps {
         sh 'cat upStreamJobOutput.txt'
         sh 'ls -lh'
         sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'
         sh 'git push --all --verbose'
+      }
+    }
+	stage ('Downstream1') {
+      steps {
+        build job: 'DownStreamJob1'
       }
     }
     
