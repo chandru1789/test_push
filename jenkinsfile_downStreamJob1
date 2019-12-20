@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  String sytem_Build =DownStream1
+  $ sytem_Build ="DownStream1"
 
   stages {
     stage('Checkout') {
@@ -14,7 +14,7 @@ pipeline {
       steps {
         echo "Compiling DownStream1 System...."
         
-        sytem_Build +=${BUILD_NUMBER}
+        $ sytem_Build +=${BUILD_NUMBER}
         sh 'echo ${sytem_Build}> mytext1.txt'
       }
     }
