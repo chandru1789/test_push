@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        echo "Checking out the file from Master..."
-        sh 'git checkout master'
+        echo "Checking out the file from Master..
 		sh 'git pull'
 		
       }
@@ -21,11 +20,6 @@ pipeline {
         sh 'ls -lh'
         sh 'git commit -m "Jenkins commit after build" downStreamJob1Output.txt'
         sh 'git push --all --verbose'
-      }
-    }
-	 stage ('Downstream2') {
-      steps {
-        build job: 'DownStreamJob2'
       }
     }
     

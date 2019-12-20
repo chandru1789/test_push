@@ -1,5 +1,6 @@
 pipeline {
   agent any
+
   stages {
     stage('Checkout') {
       steps {
@@ -16,16 +17,24 @@ pipeline {
       }
     }
      stage('Commit') {
+
       steps {
         sh 'cat upStreamJobOutput.txt'
         sh 'ls -lh'
-        sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'
+        sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'\
+		sh './git-tag.sh'
         sh 'git push --all --verbose'
+		sh 'git push origin --tags
       }
     }
-	stage ('Downstream1') {
+	stage ('DownStreamJob1') {
       steps {
         build job: 'DownStreamJob1'
+      }
+    }
+	stage ('DownStreamJob2') {
+      steps {
+        build job: 'DownStreamJob2'
       }
     }
     
