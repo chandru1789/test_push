@@ -21,7 +21,7 @@ pipeline {
       steps {
         sh 'cat upStreamJobOutput.txt'
         sh 'ls -lh'
-        sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'\
+        sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'
 		sh './git-tag.sh'
         sh 'git push --all --verbose'
 		sh 'git push origin --tags'
