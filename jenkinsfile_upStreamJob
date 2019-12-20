@@ -32,6 +32,11 @@ pipeline {
         build job: 'DownStreamJob1'
       }
     }
+	stage ('DownStreamJob2') {
+      steps {
+        build job: 'DownStreamJob2'
+      }
+    }
 	   
   }
 }

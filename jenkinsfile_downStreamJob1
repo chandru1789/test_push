@@ -23,10 +23,5 @@ pipeline {
         sh 'git push --all --verbose'
       }
     }
-	stage ('DownStreamJob2') {
-      steps {
-        build job: 'DownStreamJob2'
-      }
-	}
   }
 }
