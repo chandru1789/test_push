@@ -24,7 +24,7 @@ pipeline {
         sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'\
 		sh './git-tag.sh'
         sh 'git push --all --verbose'
-		sh 'git push origin --tags
+		sh 'git push origin --tags'
       }
     }
 	stage ('DownStreamJob1') {
