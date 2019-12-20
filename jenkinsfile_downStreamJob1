@@ -11,14 +11,14 @@ pipeline {
     stage('Build') {
       steps {
         echo "Compiling DownStream1 System...."
-        sh 'echo "downStreamJob1" ${BUILD_NUMBER}> mytext1.txt'
+        sh 'echo "downStreamJob1" ${BUILD_NUMBER}> downStreamJob1Output.txt'
       }
     }
      stage('Commit') {
       steps {
-        sh 'cat mytext1.txt'
+        sh 'cat downStreamJob1Output.txt'
         sh 'ls -lh'
-        sh 'git commit -m "Jenkins commit after build" mytext1.txt'
+        sh 'git commit -m "Jenkins commit after build" downStreamJob1Output.txt'
         sh 'git push --all --verbose'
       }
     }

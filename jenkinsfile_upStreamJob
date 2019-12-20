@@ -11,7 +11,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "Compiling upStream Job...."
-        sh 'echo "upStreamJob" ${BUILD_NUMBER}> mytext1.txt'
+        sh 'echo "upStreamJob" ${BUILD_NUMBER}> upStreamJobOutput.txt'
       }
     }
     stage ('Downstream1') {
@@ -21,9 +21,9 @@ pipeline {
     }
      stage('Commit') {
       steps {
-        sh 'cat mytext1.txt'
+        sh 'cat upStreamJobOutput.txt'
         sh 'ls -lh'
-        sh 'git commit -m "Jenkins commit after build" mytext1.txt'
+        sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'
         sh 'git push --all --verbose'
       }
     }
