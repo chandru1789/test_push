@@ -1,6 +1,5 @@
 pipeline {
   agent any
-  $ sytem_Build ="upStream"
   stages {
     stage('Checkout') {
       steps {
@@ -12,8 +11,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "Compiling upStream Job...."
-		$ sytem_Build +=${BUILD_NUMBER}
-        sh 'echo ${sytem_Build}> mytext1.txt'
+        sh 'echo "upStreamJob" ${BUILD_NUMBER}> mytext1.txt'
       }
     }
     stage ('Downstream1') {
