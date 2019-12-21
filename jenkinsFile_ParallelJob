@@ -1,4 +1,4 @@
-pipeline {
+node {
   agent any
   parallel firstBranch: {
         // do something
@@ -10,8 +10,8 @@ pipeline {
     }
     }, secondBranch: {
         // do something else
-	tage ('UpStreamJob2') {
-	  echo "UpStreamJob1 execution"
+	stagetage ('UpStreamJob2') {
+	  echo "UpStreamJob2 execution"
       steps {
         build job: 'UpStreamJob2'
       }
