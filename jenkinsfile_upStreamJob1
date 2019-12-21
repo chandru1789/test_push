@@ -13,15 +13,15 @@ pipeline {
     stage('Build') {
       steps {
         echo "Compiling upStream Job...."
-        sh 'echo "upStreamJob" ${BUILD_NUMBER}> upStreamJobOutput.txt'
+        sh 'echo "upStreamJob" ${BUILD_NUMBER}> upStreamJobOutput2.txt'
       }
     }
      stage('Commit') {
 
       steps {
-        sh 'cat upStreamJobOutput.txt'
+        sh 'cat upStreamJobOutput2.txt'
         sh 'ls -lh'
-        sh 'git commit -m "Jenkins commit after build" upStreamJobOutput.txt'
+        sh 'git commit -m "Jenkins commit after build" upStreamJobOutput2.txt'
 		sh './git-tag.sh'
         sh 'git push --all --verbose'
 		sh 'git push origin --tags'
