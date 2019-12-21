@@ -1,21 +1,35 @@
 pipeline {
-  agent any
-  parallel firstBranch: {
-        // do something
-	stage ('UpStreamJob1') {
-	  echo "UpStreamJob1 execution"
-      steps {
-        build job: 'UpStreamJob'
-      }
+    agent none
+    stages {
+        stage('Calling Upstream Jobs') {
+            parallel {
+                stage('UpStreamJob1') {
+                    agent {
+                        label "UpStreamJob1"
+                    }
+                    steps {
+                        build job: 'UpStreamJob'
+                    }
+                    post {
+                        always {
+                            echo "UpStreamJob1 Completed Successfully"
+                        }
+                    }
+                }
+                stage('UpStreamJob2') {
+                    agent {
+                        label "UpStreamJob2"
+                    }
+                    steps {
+                        build job: 'UpStreamJob'
+                    }
+                    post {
+                        always {
+                           echo "UpStreamJob2 Completed Successfully"
+                        }
+                    }
+                }
+            }
+        }
     }
-    }, secondBranch: {
-        // do something else
-	stagetage ('UpStreamJob2') {
-	  echo "UpStreamJob2 execution"
-      steps {
-        build job: 'UpStreamJob2'
-      }
-    }
-    },
-    failFast: true
 }
