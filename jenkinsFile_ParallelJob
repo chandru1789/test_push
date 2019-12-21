@@ -1,4 +1,4 @@
-node {
+pipeline {
   agent any
   parallel firstBranch: {
         // do something
