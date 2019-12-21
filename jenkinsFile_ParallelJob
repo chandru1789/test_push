@@ -4,9 +4,7 @@ pipeline {
         stage('Calling Upstream Jobs') {
             parallel {
                 stage('UpStreamJob1') {
-                    agent {
-                        label "UpStreamJob1"
-                    }
+                   
                     steps {
                         build job: 'UpStreamJob'
                     }
@@ -17,9 +15,7 @@ pipeline {
                     }
                 }
                 stage('UpStreamJob2') {
-                    agent {
-                        label "UpStreamJob2"
-                    }
+                   
                     steps {
                         build job: 'UpStreamJob'
                     }
