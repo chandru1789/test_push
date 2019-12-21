@@ -17,7 +17,7 @@ pipeline {
                 stage('UpStreamJob2') {
                    
                     steps {
-                        build job: 'UpStreamJob'
+                        build job: 'UpStreamJob2'
                     }
                     post {
                         always {
